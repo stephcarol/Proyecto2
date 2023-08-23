@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.ArbolTrieController">
+   <children>
+      <TextArea fx:id="textArea" layoutX="1.0" prefHeight="400.0" prefWidth="312.0" />
+      <VBox alignment="CENTER" layoutX="346.0" layoutY="18.0" prefHeight="365.0" prefWidth="230.0" spacing="25.0">
+         <children>
+            <Button fx:id="btBuscar" mnemonicParsing="false" text="BUSCAR" />
+            <Button fx:id="btInsertar" mnemonicParsing="false" text="INSERTAR" />
+            <Button fx:id="btEliminar" mnemonicParsing="false" text="ELIMINAR" />
+            <Button fx:id="btCargar" mnemonicParsing="false" text="CARGAR " />
+            <Button fx:id="btGuardar" mnemonicParsing="false" text="GUARDAR" />
+         </children>
+      </VBox>
+   </children>
+</Pane>
