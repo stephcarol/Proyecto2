@@ -1,4 +1,4 @@
-module ec.edu.espol.proyecto2 {
+module ec.edu.espol.proyecto {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;
