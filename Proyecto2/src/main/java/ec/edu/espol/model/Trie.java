@@ -167,7 +167,36 @@ import java.util.List;
         }
         return false;
     }
+ 
+    public List<String> buscarSufijo(String suffix) {
+    List<String> result = new ArrayList<>();
+    TrieNode current = root;
 
+    for (int i = suffix.length() - 1; i >= 0; i--) {
+        int id = suffix.charAt(i) - 0;
+        if (current.children[id] == null) {
+            return result; // No hay palabras con este sufijo
+        }
+        current = current.children[id];
+    }
 
-    
+    // Ahora current apunta al nodo correspondiente al sufijo
+    buscarSufijoHelper(current, suffix, result);
+
+    return result;
+    }
+
+    private void buscarSufijoHelper(TrieNode node, String suffix, List<String> result) {
+        if (node.isEnd) {
+            result.add(suffix);
+        }
+
+        for (int i = 0; i < R; i++) {
+            TrieNode child = node.children[i];
+            if (child != null) {
+                buscarSufijoHelper(child, (char) i + suffix, result);
+            }
+        }
+    }
+
 }
