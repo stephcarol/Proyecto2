@@ -4,45 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Trie {	
-    private TrieNode root;
-    private static final int R = 256;
+    public class Trie {	
+        private TrieNode root;
+        private static final int R = 256;
 
-    public Trie() {
-        root = new TrieNode();
+        public Trie() {
+            root = new TrieNode();
+        }
+
+        private class TrieNode {
+
+        private boolean isEnd;
+        private TrieNode[] children;
+
+
+        public TrieNode() {
+            isEnd = true;
+            children = new TrieNode[R];
+        }
+
+        public boolean isIsEnd() {
+            return isEnd;
+        }
+
+        public void setIsEnd(boolean isEnd) {
+            this.isEnd = isEnd;
+        }
+
+        public TrieNode[] getChildren() {
+            return children;
+        }
+
+        public void setChildren(TrieNode[] children) {
+            this.children = children;
+        }
+
     }
-
-    private class TrieNode {
-    
-    private boolean isEnd;
-    private TrieNode[] children;
-
-
-    public TrieNode() {
-        isEnd = true;
-        children = new TrieNode[R];
-    }
-
-    public boolean isIsEnd() {
-        return isEnd;
-    }
-
-    public void setIsEnd(boolean isEnd) {
-        this.isEnd = isEnd;
-    }
-
-    public TrieNode[] getChildren() {
-        return children;
-    }
-
-    public void setChildren(TrieNode[] children) {
-        this.children = children;
-    }
-    
-    
-    
-    
-}
+        
     // Inserts a word into the trie.
     public void insert(String word) {
     	TrieNode current = root;
@@ -125,34 +123,50 @@ public class Trie {
     }
     
     private String print(String prefix, TrieNode root, int id, boolean isTail, boolean isRoot, String output) {
-    if (!isRoot) {
-        output += prefix +
-                (isTail ? "  `--- " : "  |--- ") +
-                (char) id +
-                (root.isEnd ? " ***" : "") + "\n";
-    }
+        if (!isRoot) {
+            output += prefix +
+                    (isTail ? "  `--- " : "  |--- ") +
+                    (char) id +
+                    (root.isEnd ? " ***" : "") + "\n";
+        }
 
-    TrieNode lastChild = null; // last child of root
-    int lastChildId = 0; // id of last child
-    boolean isLastChild = true;
-    for (int i = R - 1; i >= 0; i--) {
-        if (root.children[i] != null) {
-            if (isLastChild) {
-                isLastChild = false;
-                lastChild = root.children[i];
-                lastChildId = i;
-            } else {
-                output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), root.children[i], i, false, false, output);
+        TrieNode lastChild = null; // last child of root
+        int lastChildId = 0; // id of last child
+        boolean isLastChild = true;
+        for (int i = R - 1; i >= 0; i--) {
+            if (root.children[i] != null) {
+                if (isLastChild) {
+                    isLastChild = false;
+                    lastChild = root.children[i];
+                    lastChildId = i;
+                } else {
+                    output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), root.children[i], i, false, false, output);
+                }
             }
         }
-    }
-    if (lastChild != null) {
-        output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), lastChild, lastChildId, true, false, output);
-    }
+        if (lastChild != null) {
+            output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), lastChild, lastChildId, true, false, output);
+        }
 
-    return output;
-}
-  
+        return output;
+    }
+    
+    public void clear(){
+        root=null;
+    }
+    
+    
+    public boolean borrar(String str){
+        List<String> palabras = listWords();
+        if(contains(str)){
+            palabras.remove(str);
+            for(String s: palabras){
+                insert(s);
+            }
+            return true;
+        }
+        return false;
+    }
 
 
     
