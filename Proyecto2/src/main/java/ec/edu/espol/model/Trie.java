@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Trie {
-	 // extended ASCII
+public class Trie {	
     private TrieNode root;
     private static final int R = 256;
 
@@ -118,127 +117,43 @@ public class Trie {
     }
     
     // print trie contents
-    public void print() {
-        print("", root, 0, true, true);
+    public String print() {
+         //print("", root, 0, true, true);
+         String output = print("", root, 0, false, true, "");
+        return output;
+        
     }
     
-    private void print(String prefix, TrieNode root, int id, boolean isTail, boolean isRoot) {
-    	if(!isRoot) System.out.println(prefix 
-    			+ (isTail ? " `--- " :    " |--- ") 
-    			+ (char)id 
-    			+ (root.isEnd ? " ***" : ""));
-    	
-    	TrieNode lastChild = null; // last child of root
-    	int lastChildId = 0; // id of last child
-    	boolean isLastChild = true;
-    	for (int i=R-1; i>=0; i--) {
-            if(root.children[i]!=null) {
-            	if(isLastChild) {
-            		isLastChild = false;
-	            	lastChild = root.children[i];
-	            	lastChildId = i;
-            	}
-            	else print(prefix + (isRoot ? "" : (isTail ? "    " : "|   ")), root.children[i], i, false, false);
+    private String print(String prefix, TrieNode root, int id, boolean isTail, boolean isRoot, String output) {
+    if (!isRoot) {
+        output += prefix +
+                (isTail ? "  `--- " : "  |--- ") +
+                (char) id +
+                (root.isEnd ? " ***" : "") + "\n";
+    }
+
+    TrieNode lastChild = null; // last child of root
+    int lastChildId = 0; // id of last child
+    boolean isLastChild = true;
+    for (int i = R - 1; i >= 0; i--) {
+        if (root.children[i] != null) {
+            if (isLastChild) {
+                isLastChild = false;
+                lastChild = root.children[i];
+                lastChildId = i;
+            } else {
+                output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), root.children[i], i, false, false, output);
             }
         }
-        if (lastChild!=null) {
-            print(prefix + (isRoot ? "" : (isTail ?"    " : "|   ")), lastChild, lastChildId, true, false);
-        }
+    }
+    if (lastChild != null) {
+        output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), lastChild, lastChildId, true, false, output);
     }
 
-    public static void main(String[] args) {
-    	Trie trie = new Trie();
-    	trie.insert("abc");
-    	trie.insert("bay");
-    	trie.insert("bey");
-    	trie.insert("bea");
-    	trie.insert("bed");
-    	trie.insert("bee");
-    	trie.insert("boy");
-    	trie.insert("boyc");
-    	trie.insert("boyd");
-    	trie.insert("boye");
-    	trie.insert("boycd");
-    	trie.insert("bye-bye");
-    	trie.insert("by-by");
-    	trie.insert("bye");
-    	trie.insert("zad");
-    	trie.insert("zed");
-    	trie.insert("zef");
-    	trie.insert("cda");
-        trie.insert("abcdd");
-        
-    	System.out.println("trie content (*** indicates the end of a word): ");
-    	trie.print();
-    	System.out.println();
+    return output;
+}
+  
 
-    	System.out.println("list of words in trie: ");
-    	System.out.println(trie.listWords());
-    	System.out.println();
-    	
-    	System.out.println("contains boy? " + trie.contains("boy"));
-    	System.out.println("contains bo? " + trie.contains("bo"));
-    	System.out.println("contains boye? " + trie.contains("boye"));
-    	System.out.println("contains byebye? " + trie.contains("byebye"));
-    	System.out.println("contains bye-bye? " + trie.contains("bye-bye"));
-    	
-    	System.out.println();
-    	
-    	System.out.println("contains prefix bo? " + trie.containsPrefix("bo"));
-    	System.out.println("contains prefix b o? " + trie.containsPrefix("b o"));
-    	System.out.println("contains prefix bye? " + trie.containsPrefix("bye"));
-    	System.out.println("contains prefix ye? " + trie.containsPrefix("ye"));
-    	
-    	
-    	/*
-		expected output:
-		trie content (*** indicates the end of a word): 
-		├── b
-		│   ├── o
-		│   │   └── y ***
-		│   │       ├── d ***
-		│   │       ├── c ***
-		│   │       │   └── d ***
-		│   │       └── e ***
-		│   ├── e
-		│   │   ├── e ***
-		│   │   ├── d ***
-		│   │   ├── a ***
-		│   │   └── y ***
-		│   ├── a
-		│   │   └── y ***
-		│   └── y
-		│       ├── -
-		│       │   └── b
-		│       │       └── y ***
-		│       └── e ***
-		│           └── -
-		│               └── b
-		│                   └── y
-		│                       └── e ***
-		├── a
-		│   └── b
-		│       └── c ***
-		└── z
-		    ├── a
-		    │   └── d ***
-		    └── e
-		        ├── d ***
-		        └── f ***
-		
-		list of words in trie: 
-		[abc, bay, bea, bed, bee, bey, boy, boyc, boycd, boyd, boye, by-by, bye, bye-bye, zad, zed, zef]
-		
-		contains boy? true
-		contains bo? false
-		contains boye? true
-		contains byebye? false
-		contains bye-bye? true
-		
-		contains prefix bo? true
-		contains prefix b o? false
-		contains prefix bye? true
-		contains prefix ye? false
-		*/
-    }
+
+    
 }

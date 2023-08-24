@@ -23,8 +23,13 @@ public class App extends Application {
     }
 
     //Cambia el grafo de scene a la scene
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+    
+    //cambia de scene
+    public static void setRoot(FXMLLoader fxml) throws IOException {
+        scene.setRoot(fxml.load());
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
