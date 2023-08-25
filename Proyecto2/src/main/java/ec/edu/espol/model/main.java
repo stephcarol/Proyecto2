@@ -49,7 +49,7 @@ public class main {
 //            System.out.println(s);
 //        }
 //        
-        /*
+        
     	System.out.println("trie content (*** indicates the end of a word): ");
     	String s=trie.print();
         System.out.println(s);
@@ -72,7 +72,7 @@ public class main {
     	System.out.println("contains prefix bye? " + trie.containsPrefix("bye"));
     	System.out.println("contains prefix ye? " + trie.containsPrefix("ye"));
     	
-    	*/
+    	
     	/*
 		expected output:
 		trie content (*** indicates the end of a word): 

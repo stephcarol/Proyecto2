@@ -123,7 +123,7 @@ public class ArbolTrieController implements Initializable {
         String palabraEliminar = txtEliminar.getText();
 
         // Verificar si la palabra está en el Trie
-        if (trie.contains(palabraEliminar)) {
+        if (trie.contains(palabraEliminar)==true) {
             trie.delete(palabraEliminar);
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Palabra eliminada exitosamente");
             alerta.show();
