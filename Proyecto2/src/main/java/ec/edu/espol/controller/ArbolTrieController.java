@@ -119,6 +119,18 @@ public class ArbolTrieController implements Initializable {
 
     @FXML
     private void ClickEliminar(MouseEvent event) {
+        // Obtener la palabra a eliminar
+        String palabraEliminar = txtEliminar.getText();
+
+        // Verificar si la palabra está en el Trie
+        if (trie.contains(palabraEliminar)) {
+            trie.delete(palabraEliminar);
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Palabra eliminada exitosamente");
+            alerta.show();
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR, "La palabra no existe en el diccionario");
+            alerta.show();
+        }
     
     }
 

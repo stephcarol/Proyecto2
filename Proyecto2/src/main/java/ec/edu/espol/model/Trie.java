@@ -155,6 +155,41 @@ public class Trie {
 }
   
 
+public void delete(String word) {
+        if (contains(word)) {
+            delete(root, word, 0);
+        }
+    }
 
+    private void delete(TrieNode current, String word, int depth) {
+        if (depth == word.length()) {
+            current.isEnd = false;
+            return;
+        }
+
+        char charToDelete = word.charAt(depth);
+        int charIndex = charToDelete - 'a';
+
+        TrieNode nextNode = current.children[charIndex];
+        if (nextNode == null) {
+            return;
+        }
+
+        delete(nextNode, word, depth + 1);
+
+        // Eliminar nodos no utilizados
+        if (!nextNode.isEnd && isNodeEmpty(nextNode)) {
+            current.children[charIndex] = null;
+        }
+    }
+
+    private boolean isNodeEmpty(TrieNode node) {
+        for (TrieNode child : node.children) {
+            if (child != null) {
+                return false;
+            }
+        }
+        return true;
+    }
     
 }
