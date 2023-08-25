@@ -13,37 +13,33 @@ public class Trie {
     }
 
     private class TrieNode {
-    
-    private boolean isEnd;
-    private TrieNode[] children;
 
-//0982453313
-    //0997040299
-    public TrieNode() {
-        isEnd = true;
-        children = new TrieNode[R];
-    }
+        private boolean isEnd;
+        private TrieNode[] children;
 
-    public boolean isIsEnd() {
-        return isEnd;
-    }
+        public TrieNode() {
+            isEnd = true;
+            children = new TrieNode[R];
+        }
 
-    public void setIsEnd(boolean isEnd) {
-        this.isEnd = isEnd;
-    }
+        public boolean isIsEnd() {
+            return isEnd;
+        }
 
-    public TrieNode[] getChildren() {
-        return children;
-    }
+        public void setIsEnd(boolean isEnd) {
+            this.isEnd = isEnd;
+        }
 
-    public void setChildren(TrieNode[] children) {
-        this.children = children;
+        public TrieNode[] getChildren() {
+            return children;
+        }
+
+        public void setChildren(TrieNode[] children) {
+            this.children = children;
+        }
     }
-    
     
     
-    
-}
     // Inserts a word into the trie.
     public void insert(String word) {
     	TrieNode current = root;
@@ -57,41 +53,53 @@ public class Trie {
         }
         current.isEnd = true;
     }
+    
+    public void insertAll(List<String> list){
+        for(String s: list){
+            insert(s);
+        }
+    }
 
     
     // Retorna si la palabra contiene en el trie
     public boolean contains(String word) {
-        return buscar(word, 1);
-    }
-
-  
-    //Retorna boolean si existe alguna palabra en el trie que empiece con algun prefijo 
-    public boolean containsPrefix(String prefix) {
-        return buscar(prefix, 2);
-    }
-    
-    private boolean buscar(String str, int type) {
-        TrieNode current = root;
-        int i = 0;
-        int length = str.length();
-
-        while (i < length) {
-            char ch = str.charAt(i);
-            int id = ch - 'a'; 
-            if (current.children[id] == null) {
-                return false;
+        List<String> list = listWords();
+        for (String s:list){
+            if(s.equals(word)){
+                return true;
             }
-            current = current.children[id];
-            i++;
         }
-
-        if (type == 1) {
-            return current.isEnd;
-        } else {
-            return true;
-        }
+        return false;
     }
-    
+
+//  
+//    //Retorna boolean si existe alguna palabra en el trie que empiece con algun prefijo 
+//    public boolean containsPrefix(String prefix) {
+//        return buscar(prefix, 2);
+//    }
+//    
+//    private boolean buscar(String str, int type) {
+//        TrieNode current = root;
+//        int i = 0;
+//        int length = str.length();
+//
+//        while (i < length) {
+//            char ch = str.charAt(i);
+//            int id = ch - 'a'; 
+//            if (current.children[id] == null) {
+//                return false;
+//            }
+//            current = current.children[id];
+//            i++;
+//        }
+//
+//        if (type == 1) {
+//            return current.isEnd;
+//        } else {
+//            return true;
+//        }
+//    }
+//    
     
     //list of words in the trie
     public List<String> listWords() {
@@ -126,36 +134,36 @@ public class Trie {
     }
     
     private String print(String prefix, TrieNode root, int id, boolean isTail, boolean isRoot, String output) {
-    if (!isRoot) {
-        output += prefix +
-                (isTail ? "  `--- " : "  |--- ") +
-                (char) id +
-                (root.isEnd ? " ***" : "") + "\n";
-    }
+        if (!isRoot) {
+            output += prefix +
+                    (isTail ? "  `--- " : "  |--- ") +
+                    (char) id +
+                    (root.isEnd ? " ***" : "") + "\n";
+        }
 
-    TrieNode lastChild = null; // last child of root
-    int lastChildId = 0; // id of last child
-    boolean isLastChild = true;
-    for (int i = R - 1; i >= 0; i--) {
-        if (root.children[i] != null) {
-            if (isLastChild) {
-                isLastChild = false;
-                lastChild = root.children[i];
-                lastChildId = i;
-            } else {
-                output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), root.children[i], i, false, false, output);
+        TrieNode lastChild = null; // last child of root
+        int lastChildId = 0; // id of last child
+        boolean isLastChild = true;
+        for (int i = R - 1; i >= 0; i--) {
+            if (root.children[i] != null) {
+                if (isLastChild) {
+                    isLastChild = false;
+                    lastChild = root.children[i];
+                    lastChildId = i;
+                } else {
+                    output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), root.children[i], i, false, false, output);
+                }
             }
         }
-    }
-    if (lastChild != null) {
-        output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), lastChild, lastChildId, true, false, output);
-    }
+        if (lastChild != null) {
+            output = print(prefix + (isRoot ? "" : (isTail ? "      " : "  |   ")), lastChild, lastChildId, true, false, output);
+        }
 
-    return output;
-}
+        return output;
+    }
   
 
-public void delete(String word) {
+    public void delete(String word) {
         if (contains(word)) {
             delete(root, word, 0);
         }

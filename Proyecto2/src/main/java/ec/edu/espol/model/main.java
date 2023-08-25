@@ -67,10 +67,6 @@ public class main {
     	
     	System.out.println();
     	
-    	System.out.println("contains prefix bo? " + trie.containsPrefix("bo"));
-    	System.out.println("contains prefix b o? " + trie.containsPrefix("b o"));
-    	System.out.println("contains prefix bye? " + trie.containsPrefix("bye"));
-    	System.out.println("contains prefix ye? " + trie.containsPrefix("ye"));
     	
     	
     	/*

@@ -51,7 +51,7 @@ public class ArbolTrieController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
-    	Trie trie = new Trie(); 
+    	Trie trie = new Trie();
         String salida=trie.print();
         textArea.appendText(salida);
         
@@ -68,16 +68,16 @@ public class ArbolTrieController implements Initializable {
     @FXML
     private void ClickBuscar(MouseEvent event) {
        
-        boolean encontrado=false;
-        List<String> lista = trie.listWords();
-        for (String s : lista) {
-            if (txtBuscar.getText().equals(s)) {
-                encontrado=true;
-                break;
-            }
-                
-        }
-        if(encontrado){
+//        boolean encontrado=false;
+//        List<String> lista = trie.listWords();
+//        for (String s : lista) {
+//            if (txtBuscar.getText().equals(s)) {
+//                encontrado=true;
+//                break;
+//            }
+//                
+//        }
+        if(trie.contains(txtBuscar.getText())){
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "SE HA ENCONTRADO EXITOSAMENTE LA PALABRA INGRESADA");
             alerta.show();
         }
