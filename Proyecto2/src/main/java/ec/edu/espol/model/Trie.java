@@ -53,6 +53,12 @@ public class Trie {
         }
         current.isEnd = true;
     }
+    
+    public void insertAll(List<String> list){
+        for(String s: list){
+            insert(s);
+        }
+    }
 
     
     // Retorna si la palabra contiene en el trie
