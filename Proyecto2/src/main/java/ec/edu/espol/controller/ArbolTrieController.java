@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -48,10 +49,31 @@ public class ArbolTrieController implements Initializable {
     private TextField txtInsertar;
     @FXML
     private TextField txtEliminar;
+    @FXML
+    private TextArea sugerencia;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
     	Trie trie = new Trie(); 
+        trie.insert("abc");
+    	trie.insert("bay");
+    	trie.insert("bey");
+    	trie.insert("bea");
+    	trie.insert("bed");
+    	trie.insert("bee");
+    	trie.insert("boy");
+    	trie.insert("boyc");
+    	trie.insert("boyd");
+    	trie.insert("boye");
+    	trie.insert("boycd");
+    	trie.insert("bye-bye");
+    	trie.insert("by-by");
+    	trie.insert("bye");
+    	trie.insert("zad");
+    	trie.insert("zed");
+    	trie.insert("zef");
+    	trie.insert("cda");
+        trie.insert("abcdd");
         String salida=trie.print();
         textArea.appendText(salida);
         
@@ -63,12 +85,14 @@ public class ArbolTrieController implements Initializable {
         FXMLLoader fxml=App.loadFXMLoader("Buscar");
         App.setRoot(fxml);*/
         
-        List<String> lista=trie.listWords();
-        for(String s:lista ){
-          if(txtBuscar.getText().equals(s)){
-              System.out.println("Hemos encontrado la palabra"); 
-            }  
-        }
+//        List<String> lista=trie.listWords();
+//        for(String s:lista ){
+//          if(txtBuscar.getText().equals(s)){
+//              System.out.println("Hemos encontrado la palabra"); 
+//            }  
+//        }
+        if(trie.contains(txtBuscar.getText()))
+            System.out.println("Hemos encontrado la palabra");
         
     }
 
@@ -109,6 +133,16 @@ public class ArbolTrieController implements Initializable {
 
     @FXML
     private void ClickGuardar(MouseEvent event) {
+    }
+
+    @FXML
+    private void updateSugerencias(KeyEvent event) {
+//        sugerencia.setText("");
+//        String prefijo = txtBuscar.getText();
+//        for (String word:trie.listPrefijo(prefijo)){
+//            sugerencia.appendText(word +"\n");
+//        }
+//            
     }
    
 

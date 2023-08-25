@@ -105,13 +105,20 @@ import java.util.List;
         for (int i = 0; i < R; i++) {
             TrieNode child = current.children[i];
             if (child != null) {
-                String res = prefix + (char) i;
+                String res = prefix;
                 if (child.isEnd) {
                     list.add(res);
                 }
                 list(child, i, res, list);
             }
         }
+    }
+    
+    public List<String> listPrefijo(String prefijo){
+        List<String> list= new  ArrayList();
+        list(root, 0, prefijo, list);
+        
+        return list;
     }
     
     // print trie contents
@@ -155,25 +162,30 @@ import java.util.List;
         root=null;
     }
     
+    public void insertAll(List<String> lista){
+        for(String s: lista){
+            insert(s);
+        }
+    }
+    
     
     public boolean borrar(String str){
         List<String> palabras = listWords();
         if(contains(str)){
             palabras.remove(str);
-            for(String s: palabras){
-                insert(s);
-            }
+            clear();
+            insertAll(palabras);
             return true;
         }
         return false;
     }
  
-    public List<String> buscarSufijo(String suffix) {
+    public List<String> buscarSufijo(String sufijo) {
     List<String> result = new ArrayList<>();
     TrieNode current = root;
 
-    for (int i = suffix.length() - 1; i >= 0; i--) {
-        int id = suffix.charAt(i) - 0;
+    for (int i = sufijo.length() - 1; i >= 0; i--) {
+        int id = sufijo.charAt(i) - 0;
         if (current.children[id] == null) {
             return result; // No hay palabras con este sufijo
         }
@@ -181,20 +193,20 @@ import java.util.List;
     }
 
     // Ahora current apunta al nodo correspondiente al sufijo
-    buscarSufijoHelper(current, suffix, result);
+    buscarSufijoHelper(current, sufijo, result);
 
     return result;
     }
 
-    private void buscarSufijoHelper(TrieNode node, String suffix, List<String> result) {
+    private void buscarSufijoHelper(TrieNode node, String sufijo, List<String> result) {
         if (node.isEnd) {
-            result.add(suffix);
+            result.add(sufijo);
         }
 
         for (int i = 0; i < R; i++) {
             TrieNode child = node.children[i];
             if (child != null) {
-                buscarSufijoHelper(child, (char) i + suffix, result);
+                buscarSufijoHelper(child, (char) i + sufijo, result);
             }
         }
     }
