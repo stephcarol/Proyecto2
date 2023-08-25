@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\ec\edu\espol\model\Trie.java
 C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\ec\edu\espol\proyecto2\App.java
 C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\ec\edu\espol\model\main.java
@@ -7,14 +6,3 @@ C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\ec\edu\espol\ut
 C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\ec\edu\espol\util\RegistroException.java
 C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\ec\edu\espol\controller\ArbolTrieController.java
 C:\Users\USER\Documents\NetBeansProjects\Proyecto2\src\main\java\module-info.java
-=======
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\module-info.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\proyecto2\App.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\util\RegistroException.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\model\Trie.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\util\Validar.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\model\Database.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\controller\BuscarController.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\model\main.java
-C:\Users\sebas\OneDrive\Documents\NetBeansProjects\Estructura Datos\Proyecto 2\Proyecto2\Proyecto2\src\main\java\ec\edu\espol\controller\ArbolTrieController.java
->>>>>>> 2f982666b29e59855ff3b17431a8336085c37c11

@@ -7,14 +7,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.ArbolTrieController">
+<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.ArbolTrieController">
    <children>
-      <TextArea fx:id="textArea" layoutX="1.0" prefHeight="600.0" prefWidth="358.0" />
-      <HBox layoutX="369.0" layoutY="33.0">
+      <TextArea fx:id="textArea" layoutX="-21.0" layoutY="7.0" prefHeight="398.0" prefWidth="358.0" />
+      <VBox alignment="CENTER" layoutX="369.0" layoutY="33.0" prefHeight="365.0" prefWidth="223.0" spacing="25.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="365.0" prefWidth="223.0" spacing="25.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-<<<<<<< HEAD
                   <TextField fx:id="txtBuscar" promptText="Ingrese una palabra" />
                   <Button mnemonicParsing="false" onMouseClicked="#ClickBuscar" text="BUSCAR" />
                </children>
@@ -38,35 +37,6 @@
                </children>
             </HBox>
             <Button mnemonicParsing="false" onMouseClicked="#ClickCargar" text="CARGAR " />
-=======
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="txtBuscar" onKeyPressed="#updateSugerencias" onKeyTyped="#updateSugerencias" />
-                        <Button mnemonicParsing="false" onAction="#ClickBuscar" onMouseClicked="#ClickBuscar" text="BUSCAR" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="txtInsertar" />
-                        <Button mnemonicParsing="false" onMouseClicked="#ClickInsertar" text="INSERTAR" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="txtEliminar" />
-                        <Button mnemonicParsing="false" onMouseClicked="#ClickEliminar" text="ELIMINAR" />
-                     </children>
-                  </HBox>
-                  <Button mnemonicParsing="false" onMouseClicked="#ClickCargar" text="CARGAR " />
-                  <Button fx:id="btGuardar" mnemonicParsing="false" onMouseClicked="#ClickGuardar" text="GUARDAR" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <VBox layoutX="622.0" layoutY="33.0" prefHeight="216.0" prefWidth="159.0">
-         <children>
-            <TextArea fx:id="sugerencia" prefHeight="200.0" prefWidth="200.0" />
->>>>>>> 2f982666b29e59855ff3b17431a8336085c37c11
          </children>
       </VBox>
    </children>

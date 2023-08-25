@@ -1,9 +1,0 @@
-ec\edu\espol\model\main.class
-ec\edu\espol\proyecto2\App.class
-ec\edu\espol\model\Trie.class
-ec\edu\espol\controller\BuscarController.class
-ec\edu\espol\util\RegistroException.class
-ec\edu\espol\controller\ArbolTrieController.class
-ec\edu\espol\model\Trie$TrieNode.class
-module-info.class
-ec\edu\espol\util\Validar.class
