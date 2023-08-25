@@ -72,34 +72,34 @@ public class Trie {
         return false;
     }
 
-  
-    //Retorna boolean si existe alguna palabra en el trie que empiece con algun prefijo 
-    public boolean containsPrefix(String prefix) {
-        return buscar(prefix, 2);
-    }
-    
-    private boolean buscar(String str, int type) {
-        TrieNode current = root;
-        int i = 0;
-        int length = str.length();
-
-        while (i < length) {
-            char ch = str.charAt(i);
-            int id = ch - 'a'; 
-            if (current.children[id] == null) {
-                return false;
-            }
-            current = current.children[id];
-            i++;
-        }
-
-        if (type == 1) {
-            return current.isEnd;
-        } else {
-            return true;
-        }
-    }
-    
+//  
+//    //Retorna boolean si existe alguna palabra en el trie que empiece con algun prefijo 
+//    public boolean containsPrefix(String prefix) {
+//        return buscar(prefix, 2);
+//    }
+//    
+//    private boolean buscar(String str, int type) {
+//        TrieNode current = root;
+//        int i = 0;
+//        int length = str.length();
+//
+//        while (i < length) {
+//            char ch = str.charAt(i);
+//            int id = ch - 'a'; 
+//            if (current.children[id] == null) {
+//                return false;
+//            }
+//            current = current.children[id];
+//            i++;
+//        }
+//
+//        if (type == 1) {
+//            return current.isEnd;
+//        } else {
+//            return true;
+//        }
+//    }
+//    
     
     //list of words in the trie
     public List<String> listWords() {

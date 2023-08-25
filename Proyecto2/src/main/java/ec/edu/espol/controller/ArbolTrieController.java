@@ -52,8 +52,6 @@ public class ArbolTrieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
     	Trie trie = new Trie();
-        List<String> palabras= Dictionary.readDictionary();
-        trie.insertAll(palabras);
         String salida=trie.print();
         textArea.appendText(salida);
         
