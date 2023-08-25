@@ -21,6 +21,6 @@ public class Validar {
             throw new RegistroException("Ingrese dato Valido");
             
         }     
-    }
+    }   
      
 }

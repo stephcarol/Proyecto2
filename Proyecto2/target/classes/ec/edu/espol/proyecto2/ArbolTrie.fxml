@@ -14,7 +14,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="txtBuscar" />
+                  <TextField fx:id="txtBuscar" promptText="Ingrese una palabra" />
                   <Button mnemonicParsing="false" onMouseClicked="#ClickBuscar" text="BUSCAR" />
                </children>
             </HBox>
@@ -30,8 +30,13 @@
                   <Button mnemonicParsing="false" onMouseClicked="#ClickEliminar" text="ELIMINAR" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="txtArchivo" promptText="Nombre de Archivo" />
+                  <Button mnemonicParsing="false" onMouseClicked="#ClickGuardar" text="GUARDAR" />
+               </children>
+            </HBox>
             <Button mnemonicParsing="false" onMouseClicked="#ClickCargar" text="CARGAR " />
-            <Button fx:id="btGuardar" mnemonicParsing="false" onMouseClicked="#ClickGuardar" text="GUARDAR" />
          </children>
       </VBox>
    </children>

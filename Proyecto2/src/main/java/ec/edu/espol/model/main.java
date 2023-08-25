@@ -4,6 +4,11 @@
  */
 package ec.edu.espol.model;
 
+import ec.edu.espol.proyecto2.App;
+import ec.edu.espol.util.Archivos;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author USER
@@ -35,6 +40,16 @@ public class main {
     	trie.insert("cda");
         trie.insert("abcdd");
         
+        
+        //List<String> lista=trie.listWords();
+        //Archivos.escribirTrie(lista, "Trie.txt");
+//        ArrayList<String> archivo=Archivos.leerTrie(App.pathFile+"Trie.txt");
+//        System.out.println(Archivos.cargarArchivo());
+//        for(String s:archivo){
+//            System.out.println(s);
+//        }
+//        
+        /*
     	System.out.println("trie content (*** indicates the end of a word): ");
     	String s=trie.print();
         System.out.println(s);
@@ -57,7 +72,7 @@ public class main {
     	System.out.println("contains prefix bye? " + trie.containsPrefix("bye"));
     	System.out.println("contains prefix ye? " + trie.containsPrefix("ye"));
     	
-    	
+    	*/
     	/*
 		expected output:
 		trie content (*** indicates the end of a word): 

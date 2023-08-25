@@ -6,10 +6,12 @@ package ec.edu.espol.controller;
 
 import ec.edu.espol.model.Trie;
 import ec.edu.espol.proyecto2.App;
+import ec.edu.espol.util.Archivos;
 import ec.edu.espol.util.RegistroException;
 import ec.edu.espol.util.Validar;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -34,20 +36,18 @@ public class ArbolTrieController implements Initializable {
 
     @FXML
     private Pane panel;
-    public static final int DIAMETRO=30;
-    public static final int RADIO= DIAMETRO/2;
-    public static final int ANCHO=50;
+
     private Trie trie=new Trie();
     @FXML
-    private TextArea textArea;
-    @FXML
-    private Button btGuardar;
+    private TextArea textArea;    
     @FXML
     private TextField txtBuscar;
     @FXML
     private TextField txtInsertar;
     @FXML
     private TextField txtEliminar;
+    @FXML
+    private TextField txtArchivo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
@@ -57,19 +57,36 @@ public class ArbolTrieController implements Initializable {
         
     }    
 
+    public Trie getTrie() {
+        return trie;
+    }
+
+    public void setTrie(Trie trie) {
+        this.trie = trie;
+    }
+
     @FXML
-    private void ClickBuscar(MouseEvent event) throws IOException {
-        /*
-        FXMLLoader fxml=App.loadFXMLoader("Buscar");
-        App.setRoot(fxml);*/
-        
-        List<String> lista=trie.listWords();
-        for(String s:lista ){
-          if(txtBuscar.getText().equals(s)){
-              System.out.println("Hemos encontrado la palabra"); 
-            }  
+    private void ClickBuscar(MouseEvent event) {
+       
+        boolean encontrado=false;
+        List<String> lista = trie.listWords();
+        for (String s : lista) {
+            if (txtBuscar.getText().equals(s)) {
+                encontrado=true;
+                break;
+            }
+                
+        }
+        if(encontrado){
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "SE HA ENCONTRADO EXITOSAMENTE LA PALABRA INGRESADA");
+            alerta.show();
+        }
+        else{
+            Alert alerta = new Alert(Alert.AlertType.ERROR, "NO SE ENCONTRÓ LA PALABRA INGRESADA");
+            alerta.show();
         }
         
+
     }
 
     @FXML
@@ -81,11 +98,13 @@ public class ArbolTrieController implements Initializable {
                 if (textArea.getText().isEmpty()) {
                     trie.insert(dato);
                     textArea.appendText(dato);
+                    txtInsertar.clear();
                 } else if((!textArea.getText().isEmpty())){
                     trie.insert(dato);
                     String salida = trie.print();
                     textArea.clear();
                     textArea.appendText(salida);
+                    txtInsertar.clear();
                 }
                 Alert a =new Alert(Alert.AlertType.CONFIRMATION,"Datos guardados exitosamente");
                 a.show();
@@ -105,11 +124,44 @@ public class ArbolTrieController implements Initializable {
 
     @FXML
     private void ClickCargar(MouseEvent event) {
+        String nomfile = Archivos.cargarArchivo();
+        System.out.println(nomfile);
+        ArrayList<String> lista = Archivos.leerTrie(App.pathFile+nomfile);
+
+        Trie t = new Trie();
+        for (String s : lista) {
+            t.insert(s);
+        }
+        String salida = t.print();
+        if (textArea.getText().isEmpty()) {
+            textArea.appendText(salida);
+        } 
+        textArea.clear();
+        textArea.appendText(salida);
+        
+
     }
 
     @FXML
     private void ClickGuardar(MouseEvent event) {
+       String nomfile=txtArchivo.getText();
+       List<String> lista=trie.listWords();
+       if(!lista.isEmpty()){
+           Archivos.escribirTrie(lista, nomfile+".txt");
+           Alert a =new Alert(Alert.AlertType.CONFIRMATION,"Datos guardados exitosamente");
+           a.show();
+       }else{
+           Alert a =new Alert(Alert.AlertType.ERROR,"El archivo esta vacio");
+           a.show();
+       }
+       
+            
+        
+        
+        
     }
+    
+    
    
 
     
