@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -36,7 +37,7 @@ public class ArbolTrieController implements Initializable {
 
     @FXML
     private Pane panel;
-
+    
     private Trie trie=new Trie();
     @FXML
     private TextArea textArea;    
@@ -48,10 +49,30 @@ public class ArbolTrieController implements Initializable {
     private TextField txtEliminar;
     @FXML
     private TextField txtArchivo;
+    private TextArea sugerencia;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
     	Trie trie = new Trie(); 
+        trie.insert("abc");
+    	trie.insert("bay");
+    	trie.insert("bey");
+    	trie.insert("bea");
+    	trie.insert("bed");
+    	trie.insert("bee");
+    	trie.insert("boy");
+    	trie.insert("boyc");
+    	trie.insert("boyd");
+    	trie.insert("boye");
+    	trie.insert("boycd");
+    	trie.insert("bye-bye");
+    	trie.insert("by-by");
+    	trie.insert("bye");
+    	trie.insert("zad");
+    	trie.insert("zed");
+    	trie.insert("zef");
+    	trie.insert("cda");
+        trie.insert("abcdd");
         String salida=trie.print();
         textArea.appendText(salida);
         
@@ -85,10 +106,8 @@ public class ArbolTrieController implements Initializable {
             Alert alerta = new Alert(Alert.AlertType.ERROR, "NO SE ENCONTRÓ LA PALABRA INGRESADA");
             alerta.show();
         }
-        
-
     }
-
+    
     @FXML
     private void ClickInsertar(MouseEvent event) {
 
@@ -160,8 +179,17 @@ public class ArbolTrieController implements Initializable {
         
         
     }
-    
-    
+
+
+    @FXML
+    private void updateSugerencias(KeyEvent event) {
+//        sugerencia.setText("");
+//        String prefijo = txtBuscar.getText();
+//        for (String word:trie.listPrefijo(prefijo)){
+//            sugerencia.appendText(word +"\n");
+//        }
+//            
+    }
    
 
     
